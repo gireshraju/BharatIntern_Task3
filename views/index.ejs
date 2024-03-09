@@ -1,0 +1,32 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Tracker - All Transactions</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>All Transactions</h1>
+    <a href="/transactionForm/"><b>Add Transaction</b></a>
+
+    <ul>
+      <% transactions.forEach((transaction, index) => { %>
+        <li>
+          <span><strong><%= index + 1 %>.</strong><strong><%= transaction.description %></strong></span>
+          
+          <a href="/transaction/<%= transaction._id %>"><h2>Details</h2></a>
+        </li>
+      <% }); %>
+    </ul>
+    
+    <% if(transactions.length === 0) { %>
+      <p>No transactions available.</p>
+    <% } %>
+
+  </div>
+</body>
+</html>
